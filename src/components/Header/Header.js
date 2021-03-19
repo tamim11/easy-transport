@@ -23,7 +23,7 @@ const Header = () => {
                         <Link to="/contact" style={{ textDecoration: 'none' }}>Contact</Link>
                     </li>
                 </ul>
-                <button className="btn">Login</button>
+                <Link to="/login" style={{ marginTop: '10px' }}><button className="btn">Login</button></Link>
             </div>
         </div>
     );

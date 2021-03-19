@@ -6,6 +6,8 @@ body {
   box-sizing: border-box;
   background: url('./images/background.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
   font-family: 'Berkshire Swash', cursive;
 }
