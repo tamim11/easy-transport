@@ -1,7 +1,7 @@
 .card-body {
     max-width: 300px;
     max-height: 300px;
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.911);
     border-radius: 10px;
     text-align: center;
     color: black;

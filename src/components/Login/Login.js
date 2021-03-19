@@ -14,8 +14,8 @@ const Login = () => {
                     <input type="password" name="password" required /><br /><br />
                     <input type="checkbox" name="remember" />
                     <label htmlFor="remember">Remember Me</label><br /><br />
-                    <a href="#">Forgot Password</a><br /><br />
-                    <input type="submit" value="Submit" /><br /><br />
+                    <p>Forgot Password?</p>
+                    <input type="submit" value="Submit" /><br />
                 </form>
                 <p>Don't have an account? <Link to="/create">Create an account</Link></p>
                 <p>----------- Or -----------</p>
