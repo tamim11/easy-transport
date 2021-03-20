@@ -5,6 +5,7 @@ import bike from '../../images/bike.png';
 import car from '../../images/car.png';
 import bus from '../../images/bus.png';
 import train from '../../images/train.png';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -12,10 +13,10 @@ const Home = () => {
             <h1>Travelling Is Easier Than Before</h1>
             <h1>Select Your Ride</h1>
             <div className="cards">
-                <Card name="BIKE" picture={bike}></Card>
-                <Card name="CAR" picture={car}></Card>
-                <Card name="BUS" picture={bus}></Card>
-                <Card name="TRAIN" picture={train}></Card>
+                <Link to="/destination" style={{ textDecoration: 'none' }}><Card name="BIKE" picture={bike}></Card></Link>
+                <Link to="/destination" style={{ textDecoration: 'none' }}><Card name="CAR" picture={car}></Card></Link>
+                <Link to="/destination" style={{ textDecoration: 'none' }}><Card name="BUS" picture={bus}></Card></Link>
+                <Link to="/destination" style={{ textDecoration: 'none' }}><Card name="TRAIN" picture={train}></Card></Link>
             </div>
         </div>
     );
