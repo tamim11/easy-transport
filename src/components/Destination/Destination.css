@@ -10,6 +10,9 @@
     font-size: 20px;
     margin-right: 20px;
     align-self: flex-start;
+    justify-self: center;
+    min-height: 200px;
+    min-width: 20%;
 }
 
 .map1 {
@@ -27,4 +30,14 @@
     width: 170px;
     height: 30px;
     border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .map1 img {
+        height: 300px;
+    }
+    .place-info {
+        text-align: center;
+        margin-left: 150px;
+    }
 }

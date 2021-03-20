@@ -12,3 +12,10 @@
     width: 30px;
     height: 30px;
 }
+
+@media (max-width: 600px) {
+    .final-destination{
+        width: 400px;
+        text-align: center;
+    }
+}

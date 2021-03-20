@@ -45,3 +45,15 @@ ul li {
     font-size: 17px;
     cursor: pointer;
 }
+
+@media (max-width: 600px){
+    .header-main,.header-links,ul,.cards,.destination-container {
+        flex-direction: column;
+    }
+    .cards {
+        align-items: center;
+    }
+    body {
+        height:250vh;
+    }
+}
