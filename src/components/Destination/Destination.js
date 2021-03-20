@@ -1,9 +1,10 @@
 import React from 'react';
 import './Destination.css';
 import map from '../../images/Map.png';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Destination = () => {
+    const { vehicle } = useParams();
     return (
         <div className="destination-container">
             <div className="place-info">
@@ -11,7 +12,7 @@ const Destination = () => {
                 <input id="from-place" type="text" name="from" /><br /><br />
                 <label htmlFor="to">Pick To</label><br />
                 <input id="to-place" type="text" name="to" /><br /><br />
-                <Link to="/finaldest"><button className="pick-button">Search</button></Link>
+                <Link to={`/finaldest/${vehicle}`}><button className="pick-button">Search</button></Link>
             </div>
             <div className="map1">
                 <img src={map} alt="map-pic" />
