@@ -12,6 +12,8 @@ const Destination = () => {
                 <input id="from-place" type="text" name="from" /><br /><br />
                 <label htmlFor="to">Pick To</label><br />
                 <input id="to-place" type="text" name="to" /><br /><br />
+                <label htmlFor="birthday">Date</label><br />
+                <input type="date" name="birthday"></input><br /><br />
                 <Link to={`/finaldest/${vehicle}`}><button className="pick-button">Search</button></Link>
             </div>
             <div className="map1">
