@@ -1,17 +1,58 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import firebase from "firebase/app";
+import firebaseConfig from '../../firebase.config';
+import "firebase/auth";
+import { SignedInContext } from '../../App';
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+} else {
+    firebase.app();
+}
 
 const Login = () => {
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    const [isSignedIn, setIsSignedIn, user, setUser] = useContext(SignedInContext);
+    const handleSignIn = (provider) => {
+        firebase.auth()
+            .signInWithPopup(provider)
+            .then((result) => {
+                let user = result.user;
+                console.log(user);
+                setUser(user);
+                setIsSignedIn(true);
+            }).catch((error) => {
+                let errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
+
+    const handleLoginSubmit = () => {
+        const loginEmail = document.getElementById("login-email").value;
+        const loginPassword = document.getElementById("login-password").value;
+        firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
+            .then((userCredential) => {
+                var user = userCredential.user;
+                setUser(user);
+                setIsSignedIn(true);
+            })
+            .catch((error) => {
+                var errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
+
     return (
         <div className="login-container">
             <div className="login-box">
                 <h1>Login</h1>
-                <form>
+                <form onSubmit={handleLoginSubmit}>
                     <label htmlFor="email">Email</label><br />
-                    <input type="email" name="email" required /><br /><br />
+                    <input id="login-email" type="email" name="email" required /><br /><br />
                     <label htmlFor="password">Password</label><br />
-                    <input type="password" name="password" required /><br /><br />
+                    <input id="login-password" type="password" name="password" required /><br /><br />
                     <input type="checkbox" name="remember" />
                     <label htmlFor="remember">Remember Me</label><br /><br />
                     <p>Forgot Password?</p>
@@ -19,7 +60,7 @@ const Login = () => {
                 </form>
                 <p>Don't have an account? <Link to="/create">Create an account</Link></p>
                 <p>----------- Or -----------</p>
-                <button className="google-btn">Continue with Google</button>
+                <button onClick={() => handleSignIn(googleProvider)} className="google-btn">Continue with Google</button>
             </div>
         </div>
     );

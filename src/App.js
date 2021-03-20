@@ -17,8 +17,9 @@ export const SignedInContext = createContext();
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(false);
+    const [user, setUser] = useState({});
     return (
-        <SignedInContext.Provider value={[isSignedIn, setIsSignedIn]}>
+        <SignedInContext.Provider value={[isSignedIn, setIsSignedIn, user, setUser]}>
             <Router>
                 <Header></Header>
                 <Switch>
