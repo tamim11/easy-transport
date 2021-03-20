@@ -39,17 +39,22 @@ const CreateUser = () => {
             alert("Password don't match");
             return;
         }
-        firebase.auth().createUserWithEmailAndPassword(newEmail, newPassword)
-            .then((userCredential) => {
-                let newUser = userCredential.user;
-                setUser(newUser);
-                setIsSignedIn(true);
-                history.replace(from);
-            })
-            .catch((error) => {
-                let errorMessage = error.message;
-                console.log(errorMessage);
-            });
+        const validMail = /\S+@\S+\.\S+/.test(newEmail);
+        if (validMail) {
+            firebase.auth().createUserWithEmailAndPassword(newEmail, newPassword)
+                .then((userCredential) => {
+                    let newUser = userCredential.user;
+                    setUser(newUser);
+                    setIsSignedIn(true);
+                    history.replace(from);
+                })
+                .catch((error) => {
+                    let errorMessage = error.message;
+                    console.log(errorMessage);
+                });
+        } else {
+            alert("Invalid Email");
+        }
         e.preventDefault();
     }
 

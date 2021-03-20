@@ -36,17 +36,22 @@ const Login = () => {
     const handleLoginSubmit = (e) => {
         const loginEmail = document.getElementById("login-email").value;
         const loginPassword = document.getElementById("login-password").value;
-        firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
-            .then((userCredential) => {
-                var user = userCredential.user;
-                setUser(user);
-                setIsSignedIn(true);
-                history.replace(from);
-            })
-            .catch((error) => {
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
+        const validMail = /\S+@\S+\.\S+/.test(loginEmail);
+        if (validMail) {
+            firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                    setUser(user);
+                    setIsSignedIn(true);
+                    history.replace(from);
+                })
+                .catch((error) => {
+                    var errorMessage = error.message;
+                    console.log(errorMessage);
+                });
+        } else {
+            alert("Invalid Email");
+        }
         e.preventDefault();
     }
 
