@@ -32,7 +32,7 @@ function App() {
                     <Route path="/create">
                         <CreateUser></CreateUser>
                     </Route>
-                    <PrivateRoute path="/destination">
+                    <PrivateRoute path="/destination/:vehicle">
                         <Destination></Destination>
                     </PrivateRoute>
                     <PrivateRoute path="/finaldest">
