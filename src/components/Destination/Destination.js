@@ -1,6 +1,7 @@
 import React from 'react';
 import './Destination.css';
 import map from '../../images/Map.png';
+import { Link } from 'react-router-dom';
 
 const Destination = () => {
     return (
@@ -10,7 +11,7 @@ const Destination = () => {
                 <input type="text" name="from" /><br /><br />
                 <label htmlFor="to">Pick To</label><br />
                 <input type="text" name="to" /><br /><br />
-                <button className="pick-button">Search</button>
+                <Link to="/finaldest"><button className="pick-button">Search</button></Link>
             </div>
             <div className="map1">
                 <img src={map} alt="map-pic" />

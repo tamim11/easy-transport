@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import './Login.css';
 import firebase from "firebase/app";
 import firebaseConfig from '../../firebase.config';
@@ -15,6 +15,9 @@ if (!firebase.apps.length) {
 const Login = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const [isSignedIn, setIsSignedIn, user, setUser] = useContext(SignedInContext);
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
     const handleSignIn = (provider) => {
         firebase.auth()
             .signInWithPopup(provider)
@@ -23,6 +26,7 @@ const Login = () => {
                 console.log(user);
                 setUser(user);
                 setIsSignedIn(true);
+                history.replace(from);
             }).catch((error) => {
                 let errorMessage = error.message;
                 console.log(errorMessage);
@@ -37,6 +41,7 @@ const Login = () => {
                 var user = userCredential.user;
                 setUser(user);
                 setIsSignedIn(true);
+                history.replace(from);
             })
             .catch((error) => {
                 var errorMessage = error.message;
