@@ -27,9 +27,7 @@ const CreateUser = () => {
                 console.log(errorMessage);
             });
     }
-
-    const handleCreateSubmit = () => {
-        const newName = document.getElementById("new-name").value;
+    const handleCreateSubmit = (e) => {
         const newEmail = document.getElementById("new-email").value;
         const newPassword = document.getElementById("new-password").value;
         const newConfirmPassword = document.getElementById("new-password-confirm").value;
@@ -42,12 +40,12 @@ const CreateUser = () => {
                 let newUser = userCredential.user;
                 setUser(newUser);
                 setIsSignedIn(true);
-                user.displayName = newName;
             })
             .catch((error) => {
-                var errorMessage = error.message;
+                let errorMessage = error.message;
                 console.log(errorMessage);
             });
+        e.preventDefault();
     }
 
     return (

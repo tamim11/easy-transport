@@ -21,6 +21,18 @@
     border-radius: 15px;
 }
 
+input[type="text"], textarea {
+    background-color : #7a6b6b;   
+}
+
+input[type="password"], textarea {
+    background-color : #7a6b6b;   
+}
+
+input[type="email"], textarea {
+    background-color : #7a6b6b;
+}
+
 input[type=submit] {
     padding:5px 15px; 
     background: tomato; 

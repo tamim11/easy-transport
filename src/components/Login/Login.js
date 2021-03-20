@@ -29,7 +29,7 @@ const Login = () => {
             });
     }
 
-    const handleLoginSubmit = () => {
+    const handleLoginSubmit = (e) => {
         const loginEmail = document.getElementById("login-email").value;
         const loginPassword = document.getElementById("login-password").value;
         firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
@@ -42,6 +42,7 @@ const Login = () => {
                 var errorMessage = error.message;
                 console.log(errorMessage);
             });
+        e.preventDefault();
     }
 
     return (
